@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LeeAutoX Cars Image Hub | images.leeautox.com</title>
-  <meta name="description" content="Fast, minimalist utilitarian image dashboard for car inventory and assets hosted on images.leeautox.com." />
-  <meta property="og:title" content="LeeAutoX Cars Image Hub" />
-  <meta property="og:description" content="High-performance car image dashboard for images.leeautox.com with dynamic GitHub repository sync." />
+  <title>LeeAutoX Cars Asset CDN | images.leeautox.com</title>
+  <meta name="description" content="Live car image dashboard and asset CDN for images.leeautox.com synced with kajamarket/Images_Leeautox." />
+  <meta property="og:title" content="LeeAutoX Cars Image Dashboard" />
+  <meta property="og:description" content="Instant car asset CDN and dashboard for images.leeautox.com." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏎️</text></svg>">
   
   <style>
     /* ==========================================================================
-       Pure White Minimalist Utilitarian Theme & CSS Grid
-       Engineered for images.leeautox.com GitHub Pages Hosting
+       Pure White Minimalist Theme & Responsive CSS Grid
+       Tailored for images.leeautox.com & kajamarket/Images_Leeautox
        ========================================================================== */
     :root {
       --bg: #FFFFFF;
@@ -26,15 +26,10 @@
       --text-main: #111827;
       --text-muted: #6B7280;
       --text-subtle: #9CA3AF;
-      --brand: #0F172A;
-      --brand-accent: #2563EB;
       --success: #059669;
       --success-bg: #ECFDF5;
-      --success-border: #A7F3D0;
       --warning: #D97706;
       --warning-bg: #FFFBEB;
-      --danger: #DC2626;
-      --danger-bg: #FEF2F2;
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --radius: 6px;
@@ -50,7 +45,7 @@
     }
 
     body {
-      background-color: var(--bg);
+      background-color: #FFFFFF;
       color: var(--text-main);
       font-family: var(--font-sans);
       -webkit-font-smoothing: antialiased;
@@ -61,7 +56,7 @@
       flex-direction: column;
     }
 
-    /* Utilitarian Navigation & Header */
+    /* Top Sticky Header */
     header {
       background-color: #FFFFFF;
       border-bottom: 1px solid var(--border);
@@ -131,7 +126,6 @@
       flex-wrap: wrap;
     }
 
-    /* Repository Status Badge / Button */
     .repo-pill {
       display: inline-flex;
       align-items: center;
@@ -162,8 +156,8 @@
     }
 
     .status-dot.syncing {
-      background-color: var(--brand-accent);
-      animation: pulse 1.2s infinite;
+      background-color: #2563EB;
+      animation: pulse 1s infinite alternate;
     }
 
     .status-dot.warning {
@@ -171,85 +165,11 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.2); }
+      from { opacity: 0.4; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1.1); }
     }
 
-    /* Controls Bar */
-    .toolbar-wrapper {
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border);
-      padding: 0.75rem 1.25rem;
-    }
-
-    .toolbar-inner {
-      max-width: 1600px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .search-box-container {
-      position: relative;
-      flex: 1;
-      min-width: 260px;
-      max-width: 440px;
-    }
-
-    .search-input {
-      width: 100%;
-      height: 38px;
-      padding: 0 2.25rem 0 2.25rem;
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-size: 0.875rem;
-      color: var(--text-main);
-      outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .search-input:focus {
-      border-color: var(--border-dark);
-      box-shadow: 0 0 0 1px var(--border-dark);
-    }
-
-    .search-icon-left {
-      position: absolute;
-      left: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-subtle);
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .kbd-shortcut {
-      position: absolute;
-      right: 0.65rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      background: var(--surface-subtle);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-      pointer-events: none;
-    }
-
-    .toolbar-tools {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -297,7 +217,82 @@
       height: 36px;
     }
 
-    /* Density switchers */
+    /* Toolbar / Search / Controls */
+    .toolbar-wrapper {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+    }
+
+    .toolbar-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box-container {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+      max-width: 440px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 38px;
+      padding: 0 2.25rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--border-dark);
+      box-shadow: 0 0 0 1px var(--border-dark);
+    }
+
+    .search-icon-left {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-subtle);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .kbd-shortcut {
+      position: absolute;
+      right: 0.65rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    .toolbar-tools {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* View Switcher */
     .view-switcher {
       display: flex;
       align-items: center;
@@ -325,7 +320,7 @@
       box-shadow: var(--shadow-sm);
     }
 
-    /* Secondary status bar (counts, notice) */
+    /* Stats & Subheader */
     .catalog-meta-bar {
       max-width: 1600px;
       margin: 0 auto;
@@ -337,12 +332,6 @@
       font-size: 0.8rem;
       color: var(--text-muted);
       flex-wrap: wrap;
-    }
-
-    .meta-counts {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .meta-counts strong {
@@ -362,7 +351,7 @@
       color: var(--text-muted);
     }
 
-    /* Main Grid Layout */
+    /* Main Grid */
     main {
       flex: 1;
       max-width: 1600px;
@@ -377,18 +366,17 @@
       width: 100%;
     }
 
-    /* Density configurations */
     .images-grid.density-compact {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
       gap: 0.85rem;
     }
 
     .images-grid.density-standard {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     }
 
     .images-grid.density-large {
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     }
 
     .images-grid.density-list {
@@ -396,7 +384,7 @@
       gap: 0.5rem;
     }
 
-    /* Image Card - Clean, Utilitarian, Sharp */
+    /* Image Card */
     .car-card {
       background: #FFFFFF;
       border: 1px solid var(--border);
@@ -405,7 +393,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     .car-card:hover {
@@ -414,11 +402,10 @@
     }
 
     .car-card.selected {
-      border-color: var(--brand-accent);
-      box-shadow: 0 0 0 2px var(--brand-accent);
+      border-color: #2563EB;
+      box-shadow: 0 0 0 2px #2563EB;
     }
 
-    /* Card Thumbnail Container */
     .card-thumb-wrapper {
       position: relative;
       background-color: #F3F4F6;
@@ -434,19 +421,18 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.25s ease;
+      transition: transform 0.2s ease;
     }
 
     .car-card:hover .card-thumb-img {
       transform: scale(1.02);
     }
 
-    /* Overlay indicator for right-click */
     .thumb-badge-overlay {
       position: absolute;
       top: 0.5rem;
       right: 0.5rem;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.78);
       backdrop-filter: blur(4px);
       color: #FFFFFF;
       font-size: 0.65rem;
@@ -462,7 +448,6 @@
       opacity: 1;
     }
 
-    /* Select Checkbox */
     .card-checkbox {
       position: absolute;
       top: 0.5rem;
@@ -477,11 +462,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.15s ease;
-    }
-
-    .card-checkbox:hover {
-      border-color: #111827;
     }
 
     .card-checkbox input {
@@ -491,7 +471,6 @@
       cursor: pointer;
     }
 
-    /* Card Content Body */
     .card-body {
       padding: 0.85rem;
       display: flex;
@@ -529,7 +508,6 @@
       white-space: nowrap;
     }
 
-    /* Action Buttons Row */
     .card-actions {
       display: flex;
       align-items: center;
@@ -593,8 +571,8 @@
     }
 
     .images-grid.density-list .card-thumb-wrapper {
-      width: 72px;
-      height: 48px;
+      width: 76px;
+      height: 52px;
       aspect-ratio: auto;
       flex-shrink: 0;
       border-radius: 4px;
@@ -613,7 +591,50 @@
       flex-shrink: 0;
     }
 
-    /* Utilitarian Toast Notification */
+    /* Skeleton Loading State */
+    .skeleton-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skeleton-thumb {
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(90deg, #f0f0f0 25%, #f7f7f7 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    .skeleton-body {
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .skeleton-line {
+      height: 14px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #f0f0f0 25%, #f7f7f7 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    .skeleton-btn {
+      height: 34px;
+      border-radius: var(--radius);
+      background: #F3F4F6;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* Floating Toast Notification */
     .toast-container {
       position: fixed;
       bottom: 1.5rem;
@@ -640,7 +661,7 @@
       transform: translateY(20px);
       opacity: 0;
       animation: toastIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      max-width: 460px;
+      max-width: 480px;
     }
 
     .toast.toast-right-click {
@@ -655,20 +676,14 @@
     }
 
     @keyframes toastIn {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes toastOut {
-      to {
-        transform: translateY(20px);
-        opacity: 0;
-      }
+      to { transform: translateY(20px); opacity: 0; }
     }
 
-    /* Modal / Drawer dialog */
+    /* Modal Backdrop & Dialog */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -763,7 +778,7 @@
     .lightbox-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.92);
       backdrop-filter: blur(8px);
       z-index: 95;
       display: flex;
@@ -793,7 +808,6 @@
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
-      position: relative;
     }
 
     .lightbox-img {
@@ -823,7 +837,7 @@
       flex-wrap: wrap;
     }
 
-    /* Notice banner for GitHub status */
+    /* Notice banner for status */
     .banner {
       max-width: 1600px;
       margin: 1rem auto 0;
@@ -836,19 +850,19 @@
       gap: 0.75rem;
     }
 
-    .banner-warning {
-      background: var(--warning-bg);
-      border: 1px solid var(--warning);
-      color: #92400E;
-    }
-
     .banner-info {
       background: #EFF6FF;
       border: 1px solid #BFDBFE;
       color: #1E40AF;
     }
 
-    /* Form elements inside modal */
+    .banner-warning {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning);
+      color: #92400E;
+    }
+
+    /* Form Inputs */
     .form-group {
       margin-bottom: 1rem;
     }
@@ -883,15 +897,17 @@
       margin-top: 0.3rem;
     }
 
-    /* Empty state */
+    /* Empty State */
     .empty-state {
       text-align: center;
-      padding: 4rem 1rem;
+      padding: 4rem 1.5rem;
       color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
     }
 
     .empty-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: var(--text-main);
       margin-bottom: 0.5rem;
@@ -917,16 +933,9 @@
       flex-wrap: wrap;
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .header-inner {
+      .header-inner, .toolbar-inner, main {
         padding: 0.75rem 1rem;
-      }
-      .toolbar-inner {
-        padding: 0.75rem 1rem;
-      }
-      main {
-        padding: 1rem;
       }
     }
   </style>
@@ -938,46 +947,51 @@
        ======================================================================== -->
   <header>
     <div class="header-inner">
-      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-        <a href="/" class="brand-group" title="LeeAutoX Vehicle Image CDN">
+      <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
+        <a href="/" class="brand-group" title="LeeAutoX Vehicles">
           <div class="brand-logo-icon">LX</div>
           <div class="brand-title">
             <span>LeeAutoX</span>
-            <span style="font-weight: 400; color: var(--text-muted);">| Car Assets</span>
+            <span style="font-weight: 400; color: var(--text-muted); font-size: 0.95rem;">| Images</span>
           </div>
         </a>
         <div class="domain-tag" id="domain-display-badge">images.leeautox.com</div>
       </div>
 
       <div class="header-actions">
-        <!-- Dynamic Repository Status Indicator -->
-        <button class="repo-pill" id="btn-repo-config" title="Click to view or customize connected GitHub repository">
+        <!-- Live GitHub Repository Status Indicator -->
+        <button class="repo-pill" id="btn-repo-config" title="Connected GitHub Repository">
           <span class="status-dot" id="repo-status-dot"></span>
-          <span id="repo-display-name">Detecting repository...</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          <span id="repo-display-name">kajamarket/Images_Leeautox</span>
         </button>
 
-        <!-- Direct GitHub Folder Link -->
-        <a href="#" target="_blank" rel="noopener noreferrer" class="btn" id="link-gh-folder" title="Open public/cars folder directly on GitHub">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          <span>GitHub Folder</span>
+        <!-- Direct Upload Button: links directly to GitHub folder upload -->
+        <a href="https://github.com/kajamarket/Images_Leeautox/upload/main/public/cars" target="_blank" rel="noopener noreferrer" class="btn btn-dark" id="link-gh-upload" title="Upload new vehicle photos straight to GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          <span>Upload Image</span>
         </a>
 
-        <!-- Export Single index.html / Setup Guide -->
-        <button class="btn btn-dark" id="btn-show-export" title="Deployment options and standalone file export">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          <span>Deploy Info</span>
+        <!-- GitHub Folder Link -->
+        <a href="https://github.com/kajamarket/Images_Leeautox/tree/main/public/cars" target="_blank" rel="noopener noreferrer" class="btn" id="link-gh-folder" title="Browse public/cars on GitHub">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>GitHub Repo</span>
+        </a>
+
+        <!-- GitHub Pages 1-Click Deploy Info Modal -->
+        <button class="btn" id="btn-show-deploy" title="GitHub Pages instant deploy info">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 12 8"></polygon></svg>
+          <span>Pages Deploy</span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- ========================================================================
-       Toolbar / Search, Filter, Density Controls
+       Toolbar / Search, Batch & Grid Density Controls
        ======================================================================== -->
   <div class="toolbar-wrapper">
     <div class="toolbar-inner">
-      <!-- Search Box with Live Filtering -->
+      <!-- Search Input -->
       <div class="search-box-container">
         <div class="search-icon-left">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -986,36 +1000,36 @@
           type="text" 
           id="search-input" 
           class="search-input" 
-          placeholder="Search by car model or file name (e.g. civic, 911, g63)..." 
+          placeholder="Filter cars (e.g. civic, 911, raptor, g63)..." 
           autocomplete="off"
         />
-        <div class="kbd-shortcut" title="Press / to focus">/</kbd-shortcut>
+        <div class="kbd-shortcut" title="Press / to search">/</kbd-shortcut>
       </div>
 
-      <!-- Quick Batch & Display Controls -->
+      <!-- Quick Actions -->
       <div class="toolbar-tools">
-        <!-- Batch Copy Button (Hidden unless items selected) -->
+        <!-- Batch Copy Button -->
         <button class="btn btn-dark" id="btn-batch-copy" style="display: none;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span id="batch-copy-text">Copy Selected (0)</span>
         </button>
 
-        <button class="btn" id="btn-toggle-select-all" title="Select or deselect all images">Select All</button>
+        <button class="btn" id="btn-toggle-select-all" title="Select or deselect all visible images">Select All</button>
 
-        <!-- Re-sync GitHub API -->
-        <button class="btn btn-icon-only" id="btn-refresh" title="Re-sync images from GitHub API">
+        <!-- Live Refresh / Sync Button -->
+        <button class="btn btn-icon-only" id="btn-refresh" title="Re-fetch newly uploaded images from GitHub API">
           <svg id="refresh-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
         </button>
 
-        <!-- Grid Density Mode Switcher -->
-        <div class="view-switcher" title="Change layout view">
-          <button class="view-btn" data-density="compact" title="Compact Grid (Dense scanning)">
+        <!-- Density Switcher -->
+        <div class="view-switcher" title="Change grid layout">
+          <button class="view-btn" data-density="compact" title="Compact Grid">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
           </button>
           <button class="view-btn active" data-density="standard" title="Standard Grid">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8"></rect><rect x="13" y="3" width="8" height="8"></rect><rect x="3" y="13" width="8" height="8"></rect><rect x="13" y="13" width="8" height="8"></rect></svg>
           </button>
-          <button class="view-btn" data-density="large" title="Large Showcase Grid">
+          <button class="view-btn" data-density="large" title="Large Grid">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
           </button>
           <button class="view-btn" data-density="list" title="Detailed List View">
@@ -1026,36 +1040,47 @@
     </div>
   </div>
 
-  <!-- Notification Banner (For GitHub API status / rate-limits / info) -->
+  <!-- Notification Banner -->
   <div id="api-banner-container"></div>
 
-  <!-- Catalog Meta Details -->
+  <!-- Meta Summary Bar -->
   <div class="catalog-meta-bar">
-    <div class="meta-counts">
-      <span>Showing <strong id="count-visible">0</strong> of <strong id="count-total">0</strong> car images</span>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span>Showing <strong id="count-visible">0</strong> of <strong id="count-total">0</strong> live car images</span>
       <span style="color: var(--text-subtle);">•</span>
       <span id="total-storage-size">0 KB total</span>
+      <span style="color: var(--text-subtle);">•</span>
+      <span id="live-sync-time" style="font-family: var(--font-mono); font-size: 0.75rem;">Syncing with GitHub...</span>
     </div>
     <div class="right-click-hint">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-      <span><strong>ProTip:</strong> Right-click any image thumbnail to instantly copy link</span>
+      <span><strong>Right-Click image</strong> = Instant Copy <code>https://images.leeautox.com/public/cars/[filename]</code></span>
     </div>
   </div>
 
   <!-- ========================================================================
-       Main Content / Image Dashboard Grid
+       Main Image Grid & Skeleton Loading
        ======================================================================== -->
   <main>
     <div id="images-container" class="images-grid density-standard">
-      <!-- Image cards populated dynamically via JavaScript -->
+      <!-- Skeleton cards shown while fetching live data from GitHub -->
+      <div class="skeleton-card"><div class="skeleton-thumb"></div><div class="skeleton-body"><div class="skeleton-line" style="width: 70%;"></div><div class="skeleton-btn"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-thumb"></div><div class="skeleton-body"><div class="skeleton-line" style="width: 60%;"></div><div class="skeleton-btn"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-thumb"></div><div class="skeleton-body"><div class="skeleton-line" style="width: 80%;"></div><div class="skeleton-btn"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-thumb"></div><div class="skeleton-body"><div class="skeleton-line" style="width: 65%;"></div><div class="skeleton-btn"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-thumb"></div><div class="skeleton-body"><div class="skeleton-line" style="width: 75%;"></div><div class="skeleton-btn"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-thumb"></div><div class="skeleton-body"><div class="skeleton-line" style="width: 55%;"></div><div class="skeleton-btn"></div></div></div>
     </div>
 
-    <!-- Empty state container -->
+    <!-- Empty State -->
     <div id="empty-state" class="empty-state" style="display: none;">
-      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
-      <div class="empty-title">No matching car images found</div>
-      <p>Try adjusting your search query or clear the filter to view all cars in public/cars.</p>
-      <button class="btn btn-dark" style="margin-top: 1rem;" onclick="clearSearchFilter()">Clear Search</button>
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚘</div>
+      <div class="empty-title" id="empty-title-text">No images found</div>
+      <p id="empty-desc-text" style="font-size: 0.875rem;">Upload car images to <code>public/cars/</code> in your GitHub repository to see them here.</p>
+      <div style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center;">
+        <a href="https://github.com/kajamarket/Images_Leeautox/upload/main/public/cars" target="_blank" rel="noopener noreferrer" class="btn btn-dark">Upload to GitHub</a>
+        <button class="btn" onclick="clearSearchFilter()">Clear Filter</button>
+      </div>
     </div>
   </main>
 
@@ -1065,12 +1090,12 @@
   <footer>
     <div class="footer-inner">
       <div>
-        <strong>LeeAutoX Image CDN</strong> — Fast car photo dashboard for <code>images.leeautox.com/public/cars/</code>
+        <strong>LeeAutoX Car Asset CDN</strong> — <code>https://images.leeautox.com/public/cars/</code>
       </div>
       <div style="display: flex; gap: 1rem; align-items: center;">
-        <span id="footer-detected-origin">Host: images.leeautox.com</span>
+        <span>Connected: <strong style="color: var(--text-main);" id="footer-repo-name">kajamarket/Images_Leeautox</strong></span>
         <span>•</span>
-        <a href="#settings" id="footer-config-link" style="color: inherit; text-decoration: underline;">Configure Repo</a>
+        <a href="#settings" id="footer-config-link" style="color: inherit; text-decoration: underline;">Settings</a>
       </div>
     </div>
   </footer>
@@ -1081,12 +1106,12 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- ========================================================================
-       Lightbox Modal (Full Image Inspection)
+       Lightbox Modal
        ======================================================================== -->
   <div id="lightbox-modal" class="lightbox-backdrop" role="dialog" aria-modal="true">
     <div class="lightbox-header">
       <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <span style="font-weight: 700; font-size: 0.95rem;" id="lightbox-filename">filename.jpg</span>
+        <span style="font-weight: 700; font-size: 0.95rem;" id="lightbox-filename">image.jpg</span>
         <span class="domain-tag" style="background: rgba(255,255,255,0.1); color: #FFF; border-color: rgba(255,255,255,0.2);" id="lightbox-filesize">0 KB</span>
       </div>
       <button class="modal-close" style="color: #FFFFFF;" id="btn-close-lightbox" title="Close (Esc)">✕</button>
@@ -1113,117 +1138,106 @@
   </div>
 
   <!-- ========================================================================
-       Repository Settings & Sync Configuration Modal
+       GitHub Pages 1-Click Instant Deploy Modal
+       ======================================================================== -->
+  <div id="deploy-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">GitHub Pages Instant Deploy</div>
+        <button class="modal-close" id="btn-close-deploy-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="font-weight: 600; margin-bottom: 0.5rem; color: var(--success); display: flex; align-items: center; gap: 0.4rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Pre-configured for images.leeautox.com &amp; kajamarket/Images_Leeautox</span>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.85rem;">
+          This codebase is already configured with a root <code>CNAME</code>, <code>.nojekyll</code>, and GitHub Actions workflow so it deploys automatically to GitHub Pages:
+        </p>
+
+        <ol style="padding-left: 1.25rem; margin-bottom: 1rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <li>
+            <strong>Images Folder:</strong> Whenever you push or drag-and-drop car photos into <code>public/cars/</code> on GitHub, this site automatically displays them immediately.
+          </li>
+          <li>
+            <strong>GitHub Pages Setting:</strong> In GitHub repo <code>kajamarket/Images_Leeautox</code> &rarr; <em>Settings &rarr; Pages</em>:
+            <br />&bull; Source: <em>Deploy from a branch</em> &rarr; <code>main</code> / <code>/ (root)</code>
+            <br />&bull; Custom domain: <code>images.leeautox.com</code> (Enforce HTTPS checked)
+          </li>
+          <li>
+            <strong>DNS Record:</strong> In your domain DNS manager, set CNAME:
+            <br /><code>images</code> &rarr; <code>kajamarket.github.io</code>
+          </li>
+        </ol>
+
+        <div style="background: var(--surface-subtle); border: 1px solid var(--border); padding: 0.75rem; border-radius: var(--radius); font-size: 0.8rem;">
+          <div style="font-weight: 600; margin-bottom: 0.25rem;">Live CDN URL Format:</div>
+          <code>https://images.leeautox.com/public/cars/[filename.jpg]</code>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-dark" id="btn-download-index-file">Download index.html</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Repository Settings Modal
        ======================================================================== -->
   <div id="repo-modal" class="modal-backdrop" role="dialog" aria-modal="true">
     <div class="modal-box">
       <div class="modal-header">
-        <div class="modal-title">GitHub Repository Settings</div>
+        <div class="modal-title">Repository Settings</div>
         <button class="modal-close" id="btn-close-repo-modal">✕</button>
       </div>
       <div class="modal-body">
-        <p style="margin-bottom: 1rem; color: var(--text-muted);">
-          The app dynamically detects your repository from the environment, hostname, or custom domain (<code>images.leeautox.com</code>). You can customize or override the repository settings below.
-        </p>
-
         <div class="form-group">
-          <label class="form-label" for="cfg-owner">GitHub Owner / Organization</label>
-          <input type="text" id="cfg-owner" class="form-input" placeholder="e.g. leeautox or username" />
-          <div class="form-hint">Username or Organization that owns the repository.</div>
+          <label class="form-label" for="cfg-owner">GitHub Username / Org</label>
+          <input type="text" id="cfg-owner" class="form-input" value="kajamarket" />
         </div>
 
         <div class="form-group">
           <label class="form-label" for="cfg-repo">Repository Name</label>
-          <input type="text" id="cfg-repo" class="form-input" placeholder="e.g. images or cars or images.leeautox.com" />
-          <div class="form-hint">The GitHub repository name containing the <code>public/cars/</code> folder.</div>
+          <input type="text" id="cfg-repo" class="form-input" value="Images_Leeautox" />
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="cfg-domain">Custom Domain Base URL</label>
+          <label class="form-label" for="cfg-domain">Custom Domain Base</label>
           <input type="text" id="cfg-domain" class="form-input" value="https://images.leeautox.com" />
-          <div class="form-hint">The base domain used when copying car image URLs. Default: <code>https://images.leeautox.com</code></div>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="cfg-token">GitHub Personal Access Token (Optional)</label>
-          <input type="password" id="cfg-token" class="form-input" placeholder="ghp_... (optional for higher rate limits)" />
-          <div class="form-hint">Only needed if your repository is private or if you hit GitHub's unauthenticated API rate limit (60 requests/hr). Stored strictly in your browser's localStorage.</div>
+          <label class="form-label" for="cfg-token">GitHub Token (Optional)</label>
+          <input type="password" id="cfg-token" class="form-input" placeholder="ghp_... (only needed if rate limit is hit)" />
         </div>
 
-        <div style="background: var(--surface-subtle); border: 1px solid var(--border); padding: 0.75rem; border-radius: var(--radius); font-size: 0.8rem;">
-          <div style="font-weight: 600; margin-bottom: 0.25rem;">Detection Diagnostics:</div>
-          <div>Current Hostname: <code id="diag-hostname"></code></div>
-          <div>Detection Method: <code id="diag-method"></code></div>
-          <div>API Endpoint: <code id="diag-endpoint" style="word-break: break-all;"></code></div>
+        <div style="background: var(--surface-subtle); border: 1px solid var(--border); padding: 0.65rem; border-radius: var(--radius); font-size: 0.75rem; color: var(--text-muted);">
+          API Endpoint: <code id="diag-endpoint" style="word-break: break-all;"></code>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn" id="btn-reset-repo-config">Reset to Auto-Detect</button>
-        <button class="btn btn-dark" id="btn-save-repo-config">Save & Re-sync</button>
+        <button class="btn" id="btn-reset-repo-config">Reset</button>
+        <button class="btn btn-dark" id="btn-save-repo-config">Save &amp; Sync</button>
       </div>
     </div>
   </div>
 
   <!-- ========================================================================
-       Deployment Guide & Standalone Export Modal
-       ======================================================================== -->
-  <div id="export-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-title">GitHub Pages Hosting & Deploy Guide</div>
-        <button class="modal-close" id="btn-close-export-modal">✕</button>
-      </div>
-      <div class="modal-body">
-        <div style="font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Hosting on <code>images.leeautox.com</code>:</div>
-        <ol style="padding-left: 1.25rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-          <li><strong>Single File:</strong> Place this <code>index.html</code> at the root of your GitHub repository.</li>
-          <li><strong>Image Folder:</strong> Upload your vehicle photos to the <code>public/cars/</code> folder in the repository.</li>
-          <li><strong>GitHub Pages Setup:</strong> In your GitHub repository <em>Settings → Pages</em>, choose <em>Deploy from a branch</em> (branch: <code>main</code>, folder: <code>/ (root)</code>).</li>
-          <li><strong>Custom Domain:</strong> Under <em>Custom domain</em>, type <code>images.leeautox.com</code>, check <em>Enforce HTTPS</em>, and point your DNS CNAME record for <code>images</code> to <code>&lt;username&gt;.github.io</code>.</li>
-        </ol>
-
-        <div style="background: var(--surface-subtle); border: 1px solid var(--border); padding: 0.85rem; border-radius: var(--radius);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <span style="font-weight: 600;">Standalone Single-File index.html:</span>
-            <button class="btn" id="btn-copy-index-source" style="height: 28px; padding: 0 0.5rem; font-size: 0.75rem;">Copy Entire HTML</button>
-          </div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0;">
-            This file contains all CSS, HTML, and JavaScript with zero external build step dependencies. You can commit it straight to GitHub.
-          </p>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-dark" id="btn-download-html">Download index.html</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================
-       Client-Side JavaScript Application Logic
-       Dynamic Repo Detection + GitHub REST API + Image Dashboard
+       JavaScript: Dynamic GitHub REST API Image Engine
        ======================================================================== -->
   <script>
     (function() {
       'use strict';
 
       // ========================================================================
-      // 1. Dynamic Repository & Environment Detection Utility (Crucial)
+      // 1. Dynamic Repository Detection
       // ========================================================================
-      /**
-       * Dynamically detects GitHub owner and repository name without hardcoding.
-       * Priority:
-       * 1. URL Query parameters (?owner=...&repo=... or ?repo=owner/repo)
-       * 2. Local storage overrides (configured in settings modal)
-       * 3. Native GitHub Pages hostname: <owner>.github.io/<repo>
-       * 4. Custom domain detection for images.leeautox.com or leeautox.com
-       * 5. Fallback defaults with graceful catalog preview
-       */
       function detectRepositoryConfig() {
         const url = new URL(window.location.href);
         const hostname = window.location.hostname.toLowerCase();
         const pathname = window.location.pathname;
 
-        // 1. URL Query parameter overrides (instant preview or CI/CD test)
+        // URL parameter override (?owner=...&repo=... or ?repo=owner/name)
         const qRepo = url.searchParams.get('repo');
         const qOwner = url.searchParams.get('owner');
         if (qRepo && qRepo.includes('/')) {
@@ -1234,72 +1248,39 @@
           return { owner: qOwner.trim(), repo: qRepo.trim(), source: 'query_param' };
         }
 
-        // 2. User saved override in localStorage
+        // LocalStorage override
         const storedOwner = localStorage.getItem('leeautox_gh_owner');
         const storedRepo = localStorage.getItem('leeautox_gh_repo');
         if (storedOwner && storedRepo) {
           return { owner: storedOwner.trim(), repo: storedRepo.trim(), source: 'local_storage' };
         }
 
-        // 3. GitHub Pages native domain format: <username>.github.io/<reponame>
+        // Native GitHub Pages domain (kajamarket.github.io/Images_Leeautox)
         if (hostname.endsWith('.github.io')) {
-          const owner = hostname.replace('.github.io', '');
-          const pathSegments = pathname.split('/').filter(Boolean);
-          // If at root of user site, repo is <owner>.github.io, otherwise path segment 0
-          const repo = pathSegments.length > 0 ? pathSegments[0] : `${owner}.github.io`;
+          const owner = hostname.replace('.github.io', '') || 'kajamarket';
+          const segments = pathname.split('/').filter(Boolean);
+          const repo = segments.length > 0 ? segments[0] : 'Images_Leeautox';
           return { owner, repo, source: 'github_pages_hostname' };
         }
 
-        // 4. Custom domain connection: images.leeautox.com or leeautox.com
-        if (hostname.includes('leeautox.com')) {
-          // Default repository name for images.leeautox.com
-          // Typical naming: owner 'leeautox', repo 'images' or 'leeautox.github.io'
-          return { owner: 'leeautox', repo: 'images', source: 'custom_domain' };
-        }
-
-        // 5. Default fallback for local development or preview environments
-        return { owner: 'leeautox', repo: 'images', source: 'default_fallback' };
+        // Custom domain (images.leeautox.com or leeautox.com) or default fallback
+        return { owner: 'kajamarket', repo: 'Images_Leeautox', source: 'default_config' };
       }
 
-      // Read custom domain base URL from setting or default to https://images.leeautox.com
       function getCustomDomainBase() {
-        const storedDomain = localStorage.getItem('leeautox_custom_domain');
-        if (storedDomain && storedDomain.trim()) {
-          return storedDomain.trim().replace(/\/+$/, '');
-        }
-        return 'https://images.leeautox.com';
+        const stored = localStorage.getItem('leeautox_custom_domain');
+        return (stored && stored.trim()) ? stored.trim().replace(/\/+$/, '') : 'https://images.leeautox.com';
       }
 
-      // ========================================================================
-      // 2. Application State & Built-in High-Res Sample Inventory
-      // ========================================================================
       let repoConfig = detectRepositoryConfig();
       let customDomainBase = getCustomDomainBase();
       let allCars = [];
       let visibleCars = [];
       let selectedFilenames = new Set();
-      let currentDensity = 'standard';
       let activeLightboxIndex = -1;
 
-      // Built-in catalog of genuine car images stored in public/cars/
-      // Used for offline mode, local dev, or when remote repo is newly initialized
-      const LOCAL_FALLBACK_CARS = [
-        { name: 'civic-type-r.jpg', size: 96256, path: 'public/cars/civic-type-r.jpg' },
-        { name: 'porsche-911-gt3.jpg', size: 108544, path: 'public/cars/porsche-911-gt3.jpg' },
-        { name: 'mercedes-amg-g63.jpg', size: 108544, path: 'public/cars/mercedes-amg-g63.jpg' },
-        { name: 'bmw-m4-coupe.jpg', size: 84992, path: 'public/cars/bmw-m4-coupe.jpg' },
-        { name: 'toyota-land-cruiser.jpg', size: 91136, path: 'public/cars/toyota-land-cruiser.jpg' },
-        { name: 'corvette-z06.jpg', size: 79872, path: 'public/cars/corvette-z06.jpg' },
-        { name: 'lexus-lx600.jpg', size: 249856, path: 'public/cars/lexus-lx600.jpg' },
-        { name: 'ford-f150-raptor.jpg', size: 62464, path: 'public/cars/ford-f150-raptor.jpg' },
-        { name: 'audi-rs6-avant.jpg', size: 66560, path: 'public/cars/audi-rs6-avant.jpg' },
-        { name: 'nissan-gtr-r35.jpg', size: 164864, path: 'public/cars/nissan-gtr-r35.jpg' },
-        { name: 'range-rover-sport.jpg', size: 48128, path: 'public/cars/range-rover-sport.jpg' },
-        { name: 'mustang-shelby-gt500.jpg', size: 130048, path: 'public/cars/mustang-shelby-gt500.jpg' }
-      ];
-
       // ========================================================================
-      // 3. UI Helpers: Formatting, Clipboard & Visual Toasts
+      // 2. Helpers: Formatting, URLs & Clipboard
       // ========================================================================
       function formatBytes(bytes) {
         if (!bytes || bytes === 0) return '0 B';
@@ -1313,51 +1294,43 @@
         return `${customDomainBase}/public/cars/${encodeURIComponent(filename)}`;
       }
 
-      /**
-       * Copies text to clipboard with fallback for legacy environments
-       */
       async function copyToClipboard(text) {
         if (navigator.clipboard && window.isSecureContext) {
           try {
             await navigator.clipboard.writeText(text);
             return true;
-          } catch (err) {
-            console.warn('Clipboard API write failed, trying execCommand fallback', err);
+          } catch (e) {
+            console.warn('Clipboard writeText failed, using fallback', e);
           }
         }
-        // Fallback textarea method
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-999999px';
-        textArea.style.top = '-999999px';
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
         try {
-          const successful = document.execCommand('copy');
-          document.body.removeChild(textArea);
-          return successful;
-        } catch (err) {
-          document.body.removeChild(textArea);
+          const ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+          return ok;
+        } catch (e) {
+          document.body.removeChild(ta);
           return false;
         }
       }
 
-      /**
-       * Shows a floating visual confirmation toast
-       */
       function showToast(message, isRightClick = false, subtitle = '') {
         const container = document.getElementById('toast-container');
         const toast = document.createElement('div');
         toast.className = 'toast' + (isRightClick ? ' toast-right-click' : '');
         
-        let iconHtml = isRightClick 
+        const icon = isRightClick
           ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`
           : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
 
         toast.innerHTML = `
-          ${iconHtml}
+          ${icon}
           <div style="display: flex; flex-direction: column; gap: 0.15rem; min-width: 0;">
             <div style="font-weight: 600; line-height: 1.2;">${message}</div>
             ${subtitle ? `<div class="toast-url">${subtitle}</div>` : ''}
@@ -1365,31 +1338,31 @@
         `;
 
         container.appendChild(toast);
-
         setTimeout(() => {
           toast.style.animation = 'toastOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards';
           setTimeout(() => {
             if (toast.parentNode) toast.parentNode.removeChild(toast);
           }, 200);
-        }, 2600);
+        }, 2400);
       }
 
       // ========================================================================
-      // 4. GitHub API Fetch & Synchronization Engine
+      // 3. Live GitHub REST API Communication
       // ========================================================================
       async function fetchImagesFromGitHub() {
         const statusDot = document.getElementById('repo-status-dot');
         const refreshIcon = document.getElementById('refresh-icon');
         const bannerContainer = document.getElementById('api-banner-container');
-        
+        const syncTimeEl = document.getElementById('live-sync-time');
+
         statusDot.className = 'status-dot syncing';
-        refreshIcon.style.animation = 'pulse 0.8s infinite linear';
+        refreshIcon.style.animation = 'pulse 0.7s infinite alternate linear';
+        syncTimeEl.textContent = 'Syncing...';
 
         const { owner, repo } = repoConfig;
         const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/public/cars`;
         const ghToken = localStorage.getItem('leeautox_gh_token');
 
-        // Update diagnostic UI elements
         updateHeaderStatus();
 
         try {
@@ -1403,50 +1376,69 @@
           if (response.ok) {
             const data = await response.json();
             if (Array.isArray(data)) {
-              // Filter image extensions only
               const imageExtensions = /\.(jpe?g|png|webp|avif|svg|gif)$/i;
               const remoteImages = data.filter(item => item.type === 'file' && imageExtensions.test(item.name));
               
-              if (remoteImages.length > 0) {
-                allCars = remoteImages.map(item => ({
-                  name: item.name,
-                  size: item.size || 0,
-                  download_url: item.download_url,
-                  html_url: item.html_url,
-                  path: item.path
-                }));
-                bannerContainer.innerHTML = '';
-                statusDot.className = 'status-dot';
-              } else {
-                // Empty folder
-                renderBanner('info', `Connected to <code>${owner}/${repo}</code>, but <code>public/cars/</code> is empty. Showing sample cars.`);
-                allCars = [...LOCAL_FALLBACK_CARS];
-                statusDot.className = 'status-dot warning';
-              }
+              allCars = remoteImages.map(item => ({
+                name: item.name,
+                size: item.size || 0,
+                download_url: item.download_url,
+                html_url: item.html_url,
+                path: item.path
+              }));
+
+              bannerContainer.innerHTML = '';
+              statusDot.className = 'status-dot';
+              const now = new Date();
+              syncTimeEl.textContent = `Synced: ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
             } else {
-              throw new Error('Unexpected response format from GitHub API');
+              throw new Error('Invalid response array format');
             }
           } else if (response.status === 404) {
-            // Repo or folder not found yet on GitHub
-            renderBanner('warning', `GitHub repository or folder <code>${owner}/${repo}/contents/public/cars</code> was not found on GitHub. Showing local car preview.`);
-            allCars = [...LOCAL_FALLBACK_CARS];
+            renderBanner('info', `Folder <code>public/cars/</code> is empty or not created yet in <code>${owner}/${repo}</code>. Upload car images to begin.`);
+            allCars = [];
             statusDot.className = 'status-dot warning';
+            syncTimeEl.textContent = 'Not found on GitHub';
           } else if (response.status === 403) {
-            // Rate limited
-            renderBanner('warning', `GitHub API rate limit reached for unauthenticated requests. You can add a GitHub Personal Access Token in Settings to bypass this.`);
-            allCars = [...LOCAL_FALLBACK_CARS];
+            renderBanner('warning', `GitHub API rate limit exceeded for unauthenticated requests. You can add a GitHub Personal Access Token in Settings to bypass this.`);
             statusDot.className = 'status-dot warning';
+            syncTimeEl.textContent = 'Rate limited';
           } else {
-            throw new Error(`GitHub API returned status ${response.status}`);
+            throw new Error(`GitHub API HTTP ${response.status}`);
           }
-        } catch (error) {
-          console.warn('GitHub API fetch notice:', error.message);
-          renderBanner('info', `Currently viewing local vehicle catalog. Click "Repo Settings" to customize your GitHub repository link.`);
-          allCars = [...LOCAL_FALLBACK_CARS];
-          statusDot.className = 'status-dot warning';
+        } catch (err) {
+          console.warn('GitHub fetch error:', err.message);
+          renderBanner('info', `Could not reach GitHub API: ${err.message}. Checking local public/cars...`);
+          // Try local fallback fetch if local server is active
+          await tryFetchLocalFolder();
         } finally {
           refreshIcon.style.animation = '';
           applySearchAndRender();
+        }
+      }
+
+      async function tryFetchLocalFolder() {
+        const syncTimeEl = document.getElementById('live-sync-time');
+        try {
+          // If running locally or on server with sample cars
+          const res = await fetch('/public/cars/civic-type-r.jpg', { method: 'HEAD' });
+          if (res.ok) {
+            const fallbackNames = [
+              'civic-type-r.jpg', 'porsche-911-gt3.jpg', 'mercedes-amg-g63.jpg', 
+              'bmw-m4-coupe.jpg', 'toyota-land-cruiser.jpg', 'corvette-z06.jpg', 
+              'lexus-lx600.jpg', 'ford-f150-raptor.jpg', 'audi-rs6-avant.jpg', 
+              'nissan-gtr-r35.jpg', 'range-rover-sport.jpg', 'mustang-shelby-gt500.jpg'
+            ];
+            allCars = fallbackNames.map(name => ({
+              name: name,
+              size: 100000,
+              download_url: `https://raw.githubusercontent.com/${repoConfig.owner}/${repoConfig.repo}/main/public/cars/${name}`,
+              path: `public/cars/${name}`
+            }));
+            syncTimeEl.textContent = 'Local preview';
+          }
+        } catch (e) {
+          // No local images
         }
       }
 
@@ -1458,7 +1450,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
               <span>${messageHtml}</span>
             </div>
-            <button class="btn" style="height: 26px; padding: 0 0.5rem; font-size: 0.75rem;" onclick="openRepoModal()">Settings</button>
+            <a href="https://github.com/${repoConfig.owner}/${repoConfig.repo}/upload/main/public/cars" target="_blank" rel="noopener noreferrer" class="btn" style="height: 26px; padding: 0 0.5rem; font-size: 0.75rem;">Upload Images</a>
           </div>
         `;
       }
@@ -1466,27 +1458,29 @@
       function updateHeaderStatus() {
         const displayName = document.getElementById('repo-display-name');
         const ghFolderLink = document.getElementById('link-gh-folder');
+        const ghUploadLink = document.getElementById('link-gh-upload');
+        const footerRepoName = document.getElementById('footer-repo-name');
         const domainBadge = document.getElementById('domain-display-badge');
 
-        displayName.textContent = `${repoConfig.owner}/${repoConfig.repo}`;
+        const repoPath = `${repoConfig.owner}/${repoConfig.repo}`;
+        displayName.textContent = repoPath;
+        footerRepoName.textContent = repoPath;
+
         ghFolderLink.href = `https://github.com/${repoConfig.owner}/${repoConfig.repo}/tree/main/public/cars`;
-        
+        ghUploadLink.href = `https://github.com/${repoConfig.owner}/${repoConfig.repo}/upload/main/public/cars`;
+
         try {
           const u = new URL(customDomainBase);
           domainBadge.textContent = u.hostname;
-        } catch(e) {
+        } catch (e) {
           domainBadge.textContent = 'images.leeautox.com';
         }
 
-        // Diagnostics
-        document.getElementById('diag-hostname').textContent = window.location.hostname || 'localhost';
-        document.getElementById('diag-method').textContent = repoConfig.source;
         document.getElementById('diag-endpoint').textContent = `https://api.github.com/repos/${repoConfig.owner}/${repoConfig.repo}/contents/public/cars`;
-        document.getElementById('footer-detected-origin').textContent = `Host: ${window.location.hostname || 'images.leeautox.com'}`;
       }
 
       // ========================================================================
-      // 5. Grid Rendering & Right-Click Listener (Crucial Specification)
+      // 4. Grid Rendering & Context Menu Right-Click Override
       // ========================================================================
       function renderGrid() {
         const container = document.getElementById('images-container');
@@ -1504,6 +1498,13 @@
         if (visibleCars.length === 0) {
           container.innerHTML = '';
           emptyState.style.display = 'block';
+          if (allCars.length === 0) {
+            document.getElementById('empty-title-text').textContent = 'No car images in repository yet';
+            document.getElementById('empty-desc-text').textContent = `Upload car photos to ${repoConfig.owner}/${repoConfig.repo} under public/cars/ and click Sync.`;
+          } else {
+            document.getElementById('empty-title-text').textContent = 'No matching images';
+            document.getElementById('empty-desc-text').textContent = 'Try adjusting your search filter or clearing it.';
+          }
           return;
         }
 
@@ -1514,17 +1515,17 @@
           const isSelected = selectedFilenames.has(car.name);
           const customUrl = buildCustomUrl(car.name);
           
-          // Image source: if running on images.leeautox.com or local preview, map to public/cars/{name}
-          // If remote download_url exists from GitHub API, fallback to it if local fails
-          const primarySrc = `/public/cars/${encodeURIComponent(car.name)}`;
-          const fallbackSrc = car.download_url || primarySrc;
+          // Use raw download URL from GitHub API as primary image source
+          // This guarantees instant loading even before custom domain DNS propagation!
+          const primarySrc = car.download_url || `/public/cars/${encodeURIComponent(car.name)}`;
+          const fallbackSrc = `/public/cars/${encodeURIComponent(car.name)}`;
 
           const card = document.createElement('div');
           card.className = `car-card ${isSelected ? 'selected' : ''}`;
           card.dataset.filename = car.name;
 
           card.innerHTML = `
-            <div class="card-thumb-wrapper" title="Left-click: Inspect full preview&#10;Right-click: Instant copy link (${customUrl})">
+            <div class="card-thumb-wrapper" title="Left-click: Inspect preview&#10;Right-click: Instant copy custom link (${customUrl})">
               <label class="card-checkbox" title="Select for batch copy" onclick="event.stopPropagation();">
                 <input type="checkbox" ${isSelected ? 'checked' : ''} data-name="${escapeHtml(car.name)}" />
               </label>
@@ -1534,7 +1535,7 @@
                 alt="${escapeHtml(car.name)}" 
                 class="card-thumb-img" 
                 loading="lazy" 
-                onerror="this.onerror=null; if('${fallbackSrc}' !== '${primarySrc}') this.src='${fallbackSrc}';" 
+                onerror="if(this.src !== '${fallbackSrc}') this.src='${fallbackSrc}';" 
               />
 
               <div class="thumb-badge-overlay">Right-Click = Copy Link</div>
@@ -1551,7 +1552,7 @@
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
                   <span>Copy Link</span>
                 </button>
-                <button class="btn-more-options" data-action="preview" data-index="${index}" title="View full preview">
+                <button class="btn-more-options" data-action="preview" data-index="${index}" title="View image">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </button>
               </div>
@@ -1559,38 +1560,36 @@
           `;
 
           // ====================================================================
-          // Crucial Requirement: Active Right-Click Listener on Thumbnail
+          // Active Right-Click Listener on Thumbnail
           // Overrides browser context menu and instantly copies absolute URL
           // ====================================================================
           const thumbWrapper = card.querySelector('.card-thumb-wrapper');
           thumbWrapper.addEventListener('contextmenu', async (e) => {
-            e.preventDefault(); // Override standard browser context menu
+            e.preventDefault();
             const targetUrl = buildCustomUrl(car.name);
             await copyToClipboard(targetUrl);
             
-            // Visual feedback: toast notification + subtle card pulse
-            showToast(`Copied image URL to clipboard`, true, targetUrl);
+            showToast('Link copied to clipboard (Right-click)', true, targetUrl);
 
-            // Animate card copy button briefly
             const copyBtn = card.querySelector('.btn-copy-link');
             if (copyBtn) {
-              const prevHtml = copyBtn.innerHTML;
+              const prev = copyBtn.innerHTML;
               copyBtn.classList.add('copied');
               copyBtn.innerHTML = `<span>Copied! ✓</span>`;
               setTimeout(() => {
                 copyBtn.classList.remove('copied');
-                copyBtn.innerHTML = prevHtml;
-              }, 1600);
+                copyBtn.innerHTML = prev;
+              }, 1500);
             }
           });
 
-          // Left-click on thumbnail opens Lightbox
+          // Left-click opens Lightbox
           thumbWrapper.addEventListener('click', (e) => {
             if (e.target.closest('.card-checkbox')) return;
             openLightbox(index);
           });
 
-          // "Copy Link" button click handler
+          // "Copy Link" Button Click
           const copyBtn = card.querySelector('.btn-copy-link');
           copyBtn.addEventListener('click', async (e) => {
             e.stopPropagation();
@@ -1598,16 +1597,16 @@
             await copyToClipboard(targetUrl);
             showToast(`Copied: ${car.name}`, false, targetUrl);
 
-            const prevHtml = copyBtn.innerHTML;
+            const prev = copyBtn.innerHTML;
             copyBtn.classList.add('copied');
             copyBtn.innerHTML = `<span>Copied! ✓</span>`;
             setTimeout(() => {
               copyBtn.classList.remove('copied');
-              copyBtn.innerHTML = prevHtml;
-            }, 1600);
+              copyBtn.innerHTML = prev;
+            }, 1500);
           });
 
-          // Checkbox change handler for batch selection
+          // Checkbox handler
           const checkbox = card.querySelector('input[type="checkbox"]');
           checkbox.addEventListener('change', (e) => {
             if (e.target.checked) {
@@ -1620,8 +1619,7 @@
           });
 
           // Preview button handler
-          const previewBtn = card.querySelector('[data-action="preview"]');
-          previewBtn.addEventListener('click', (e) => {
+          card.querySelector('[data-action="preview"]').addEventListener('click', (e) => {
             e.stopPropagation();
             openLightbox(index);
           });
@@ -1643,7 +1641,7 @@
       }
 
       // ========================================================================
-      // 6. Search, Filtering & Batch Operations
+      // 5. Search & Batch Actions
       // ========================================================================
       function applySearchAndRender() {
         const query = (document.getElementById('search-input').value || '').trim().toLowerCase();
@@ -1677,7 +1675,7 @@
       }
 
       // ========================================================================
-      // 7. Lightbox Modal Logic
+      // 6. Lightbox Modal
       // ========================================================================
       function openLightbox(visibleIndex) {
         const car = visibleCars[visibleIndex];
@@ -1685,23 +1683,17 @@
         activeLightboxIndex = visibleIndex;
 
         const modal = document.getElementById('lightbox-modal');
-        const filenameEl = document.getElementById('lightbox-filename');
-        const filesizeEl = document.getElementById('lightbox-filesize');
-        const urlEl = document.getElementById('lightbox-full-url');
-        const imgEl = document.getElementById('lightbox-img-element');
-        const downloadBtn = document.getElementById('btn-lightbox-download');
-
         const customUrl = buildCustomUrl(car.name);
-        filenameEl.textContent = car.name;
-        filesizeEl.textContent = formatBytes(car.size);
-        urlEl.textContent = customUrl;
+        
+        document.getElementById('lightbox-filename').textContent = car.name;
+        document.getElementById('lightbox-filesize').textContent = formatBytes(car.size);
+        document.getElementById('lightbox-full-url').textContent = customUrl;
 
-        const primarySrc = `/public/cars/${encodeURIComponent(car.name)}`;
-        const fallbackSrc = car.download_url || primarySrc;
-        imgEl.src = primarySrc;
-        imgEl.onerror = () => { imgEl.src = fallbackSrc; };
+        const imgEl = document.getElementById('lightbox-img-element');
+        imgEl.src = car.download_url || `/public/cars/${encodeURIComponent(car.name)}`;
 
-        downloadBtn.href = primarySrc;
+        const downloadBtn = document.getElementById('btn-lightbox-download');
+        downloadBtn.href = imgEl.src;
         downloadBtn.setAttribute('download', car.name);
 
         modal.classList.add('open');
@@ -1712,14 +1704,12 @@
       }
 
       // ========================================================================
-      // 8. Event Listeners & Modals Initialization
+      // 7. Modals & Event Bindings
       // ========================================================================
       document.addEventListener('DOMContentLoaded', () => {
-        // Search input listener
         const searchInput = document.getElementById('search-input');
         searchInput.addEventListener('input', applySearchAndRender);
 
-        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
           if (e.key === '/' && document.activeElement !== searchInput) {
             e.preventDefault();
@@ -1727,7 +1717,7 @@
           } else if (e.key === 'Escape') {
             closeLightbox();
             closeRepoModal();
-            closeExportModal();
+            closeDeployModal();
           } else if (document.getElementById('lightbox-modal').classList.contains('open')) {
             if (e.key === 'ArrowRight' && activeLightboxIndex < visibleCars.length - 1) {
               openLightbox(activeLightboxIndex + 1);
@@ -1737,19 +1727,17 @@
           }
         });
 
-        // View Density Switchers
+        // View Density Switcher
         document.querySelectorAll('.view-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const density = btn.dataset.density;
-            const container = document.getElementById('images-container');
-            container.className = `images-grid density-${density}`;
-            currentDensity = density;
+            document.getElementById('images-container').className = `images-grid density-${density}`;
           });
         });
 
-        // Batch Copy Button
+        // Batch Copy
         document.getElementById('btn-batch-copy').addEventListener('click', async () => {
           const urls = Array.from(selectedFilenames).map(name => buildCustomUrl(name));
           if (urls.length > 0) {
@@ -1758,7 +1746,7 @@
           }
         });
 
-        // Toggle Select All Button
+        // Select All Toggle
         document.getElementById('btn-toggle-select-all').addEventListener('click', () => {
           if (selectedFilenames.size === visibleCars.length && visibleCars.length > 0) {
             selectedFilenames.clear();
@@ -1768,12 +1756,12 @@
           renderGrid();
         });
 
-        // Refresh Button
+        // Re-sync Button
         document.getElementById('btn-refresh').addEventListener('click', () => {
           fetchImagesFromGitHub();
         });
 
-        // Lightbox buttons
+        // Lightbox Actions
         document.getElementById('btn-close-lightbox').addEventListener('click', closeLightbox);
         document.getElementById('btn-lightbox-copy-url').addEventListener('click', async () => {
           const car = visibleCars[activeLightboxIndex];
@@ -1800,7 +1788,14 @@
           }
         });
 
-        // Settings Modal triggers
+        // Deploy Modal
+        document.getElementById('btn-show-deploy').addEventListener('click', () => {
+          document.getElementById('deploy-modal').classList.add('open');
+        });
+        document.getElementById('btn-close-deploy-modal').addEventListener('click', closeDeployModal);
+        document.getElementById('btn-download-index-file').addEventListener('click', downloadIndexHtml);
+
+        // Settings Modal
         document.getElementById('btn-repo-config').addEventListener('click', openRepoModal);
         document.getElementById('footer-config-link').addEventListener('click', (e) => {
           e.preventDefault();
@@ -1810,20 +1805,14 @@
         document.getElementById('btn-save-repo-config').addEventListener('click', saveRepoConfig);
         document.getElementById('btn-reset-repo-config').addEventListener('click', resetRepoConfig);
 
-        // Export Modal triggers
-        document.getElementById('btn-show-export').addEventListener('click', openExportModal);
-        document.getElementById('btn-close-export-modal').addEventListener('click', closeExportModal);
-        document.getElementById('btn-download-html').addEventListener('click', downloadIndexHtml);
-        document.getElementById('btn-copy-index-source').addEventListener('click', async () => {
-          await copyToClipboard(document.documentElement.outerHTML);
-          showToast('Complete index.html copied to clipboard!', false);
-        });
-
-        // Initial Data Load
+        // Fetch Live Images from GitHub on Load
         fetchImagesFromGitHub();
       });
 
-      // Settings Modal functions
+      function closeDeployModal() {
+        document.getElementById('deploy-modal').classList.remove('open');
+      }
+
       function openRepoModal() {
         document.getElementById('cfg-owner').value = repoConfig.owner;
         document.getElementById('cfg-repo').value = repoConfig.repo;
@@ -1831,8 +1820,6 @@
         document.getElementById('cfg-token').value = localStorage.getItem('leeautox_gh_token') || '';
         document.getElementById('repo-modal').classList.add('open');
       }
-
-      window.openRepoModal = openRepoModal;
 
       function closeRepoModal() {
         document.getElementById('repo-modal').classList.remove('open');
@@ -1860,7 +1847,7 @@
         }
 
         closeRepoModal();
-        showToast('Repository configuration updated', false);
+        showToast('Settings saved, re-syncing...', false);
         fetchImagesFromGitHub();
       }
 
@@ -1872,21 +1859,12 @@
         repoConfig = detectRepositoryConfig();
         customDomainBase = getCustomDomainBase();
         openRepoModal();
-        showToast('Reset to automatic detection', false);
-      }
-
-      // Export Guide Modal functions
-      function openExportModal() {
-        document.getElementById('export-modal').classList.add('open');
-      }
-
-      function closeExportModal() {
-        document.getElementById('export-modal').classList.remove('open');
+        showToast('Reset to default repository', false);
       }
 
       function downloadIndexHtml() {
-        const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        const blob = new Blob([html], { type: 'text/html' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
         a.download = 'index.html';
