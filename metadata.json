@@ -1,0 +1,6 @@
+{
+  "name": "LeeAutoX Cars Image Hub",
+  "description": "Fast, minimalist utilitarian image dashboard for car inventory and assets hosted on images.leeautox.com.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
