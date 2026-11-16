@@ -1,0 +1,43 @@
+2012 Mercedes-Benz GLK 350 — 360° exterior frame mapping
+All images are original, byte-for-byte copies. No image editing or recompression.
+36 files are provided. Two source images are repeated to meet the 36-frame viewer setting.
+Frame | Output filename | Original source | Perspective
+01 | 01.jpg | IMG-20261116-WA0075.jpg | Front, near straight-on
+02 | 02.jpg | IMG-20261116-WA0071.jpg | Front / front-quarter
+03 | 03.jpg | IMG-20261116-WA0066.jpg | Front / front-quarter
+04 | 04.jpg | IMG-20261116-WA0064.jpg | Front / front-quarter
+05 | 05.jpg | IMG-20261116-WA0063.jpg | Front / front-quarter
+06 | 06.jpg | IMG-20261116-WA0060.jpg | Front / front-quarter
+07 | 07.jpg | IMG-20261116-WA0062.jpg | Front / front-quarter
+08 | 08.jpg | IMG-20261116-WA0035.jpg | Front / front-quarter
+09 | 09.jpg | IMG-20261116-WA0036.jpg | Side / front-side
+10 | 10.jpg | IMG-20261116-WA0037.jpg | Side / front-side
+11 | 11.jpg | IMG-20261116-WA0052.jpg | Side / front-side
+12 | 12.jpg | IMG-20261116-WA0053.jpg | Side / front-side
+13 | 13.jpg | IMG-20261116-WA0053.jpg | Side / front-side
+14 | 14.jpg | IMG-20261116-WA0054.jpg | Side / front-side
+15 | 15.jpg | IMG-20261116-WA0055.jpg | Side / front-side
+16 | 16.jpg | IMG-20261116-WA0059.jpg | Rear-side / rear-quarter
+17 | 17.jpg | IMG-20261116-WA0038.jpg | Rear-side / rear-quarter
+18 | 18.jpg | IMG-20261116-WA0039.jpg | Rear-side / rear-quarter
+19 | 19.jpg | IMG-20261116-WA0040.jpg | Rear-side / rear-quarter
+20 | 20.jpg | IMG-20261116-WA0041.jpg | Rear-side / rear-quarter
+21 | 21.jpg | IMG-20261116-WA0057.jpg | Rear-side / rear-quarter
+22 | 22.jpg | IMG-20261116-WA0065.jpg | Rear-side / rear-quarter
+23 | 23.jpg | IMG-20261116-WA0073.jpg | Rear-side / rear-quarter
+24 | 24.jpg | IMG-20261116-WA0045.jpg | Rear / rear-quarter
+25 | 25.jpg | IMG-20261116-WA0042.jpg | Rear / rear-quarter
+26 | 26.jpg | IMG-20261116-WA0043.jpg | Rear / rear-quarter
+27 | 27.jpg | IMG-20261116-WA0043.jpg | Rear / rear-quarter
+28 | 28.jpg | IMG-20261116-WA0044.jpg | Rear / rear-quarter
+29 | 29.jpg | IMG-20261116-WA0047.jpg | Rear / rear-quarter
+30 | 30.jpg | IMG-20261116-WA0067.jpg | Rear / rear-quarter
+31 | 31.jpg | IMG-20261116-WA0074.jpg | Opposite side / returning toward front
+32 | 32.jpg | IMG-20261116-WA0048.jpg | Opposite side / returning toward front
+33 | 33.jpg | IMG-20261116-WA0046.jpg | Opposite side / returning toward front
+34 | 34.jpg | IMG-20261116-WA0069.jpg | Opposite side / returning toward front
+35 | 35.jpg | IMG-20261116-WA0068.jpg | Opposite side / returning toward front
+36 | 36.jpg | IMG-20261116-WA0070.jpg | Opposite side / returning toward front
+
+Viewer configuration: data-amount-x="36" and data-filename-x="{index}.jpg"
+Note: the two repeated frames are exact copies, not newly captured angles. For a truly smooth 36-step rotation, capture two additional intermediate viewpoints.
